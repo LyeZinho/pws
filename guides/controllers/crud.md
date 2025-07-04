@@ -30,6 +30,10 @@ POST ?c=users&a=update    → update() (atualizar)
 POST ?c=users&a=delete    → delete() (eliminar)
 ```
 
+?c=users → Controller de utilizadores
+?a=index → Ação index (listar) / view users/index.php
+?c=users&a=show&id=1 → Ação show (mostrar utilizador com ID 1)
+
 ## 📖 Read (Listar e Mostrar)
 
 ### **1. Index - Listar Todos**
