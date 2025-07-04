@@ -1,70 +1,475 @@
-# GEstufas - Sistema de Gestão de Estufas
+# 🌱 GEstufas - Sistema de Gestão de Estufas
 
 ## 📋 Sobre o Projeto
 
-O GEstufas é um sistema web desenvolvido em PHP que utiliza o padrão MVC (Model-View-Controller) para gestão de estufas. O projeto implementa um ORM (Object-Relational Mapping) utilizando a biblioteca PHP ActiveRecord para facilitar as operações com a base de dados.
+O **GEstufas** é um sistema web completo desenvolvido em PHP que utiliza o padrão **MVC (Model-View-Controller)** para gestão de estufas. O projeto implementa um **ORM (Object-Relational Mapping)** utilizando a biblioteca **PHP ActiveRecord** para facilitar as operações com a base de dados.
+
+### ✨ Características Principais
+
+- 🏗️ **Arquitetura MVC** bem estruturada
+- 🔐 **Sistema de autenticação** completo
+- 👥 **CRUD de usuários** com validações
+- 💬 **Sistema de posts e comentários**
+- 📊 **Dashboard com estatísticas**
+- 🎨 **Interface responsiva** com Bootstrap 5
+- 🗄️ **ORM ActiveRecord** para base de dados
+- 📝 **Código totalmente comentado**
+
+---
 
 ## 🏗️ Arquitetura do Sistema
 
-### Estrutura de Pastas
+### 📁 Estrutura de Pastas
 
 ```
-📁 projeto/
-├── 📁 config/           # Configurações do sistema
-├── 📁 controllers/      # Controllers do padrão MVC
-├── 📁 core/            # Classes base do sistema
-├── 📁 framework/       # Framework customizado (Router)
-├── 📁 models/          # Modelos ActiveRecord
-├── 📁 public/          # Recursos públicos (CSS, JS, imagens)
-├── 📁 scripts/         # Scripts SQL da base de dados
-├── 📁 startup/         # Configurações de inicialização
-├── 📁 vendor/          # Dependências do Composer
-├── 📁 views/           # Templates/Views
-├── composer.json       # Configuração do Composer
-├── index.php          # Ponto de entrada da aplicação
-└── routes.php         # Definição das rotas
+📁 gestufas/
+├── 📁 config/              # Configurações do sistema
+│   ├── app.php            # Configurações da aplicação
+│   └── config.php         # Configurações por ambiente
+├── 📁 controllers/         # Controllers do padrão MVC
+│   ├── AuthController.php     # Autenticação
+│   ├── UserController.php     # CRUD de usuários
+│   ├── CommunityController.php # Posts e comentários
+│   ├── HomeController.php     # Página inicial
+│   ├── ProfileController.php  # Perfil do usuário
+│   └── Controller.php         # Controller base
+├── 📁 core/               # Classes base do sistema
+│   ├── Controller.php     # Controller base
+│   └── Router.php         # Router base
+├── 📁 framework/          # Framework customizado
+│   └── Router.php         # Sistema de rotas
+├── 📁 models/             # Modelos ActiveRecord
+│   ├── User.php          # Modelo de usuário
+│   ├── Post.php          # Modelo de post
+│   ├── Project.php       # Modelo de projeto
+│   ├── Comment.php       # Modelo de comentário
+│   └── Auth.php          # Modelo de autenticação
+├── 📁 views/              # Templates/Views
+│   ├── 📁 auth/          # Views de autenticação
+│   ├── 📁 users/         # Views de usuários
+│   ├── 📁 community/     # Views da comunidade
+│   ├── 📁 home/          # Views da página inicial
+│   └── 📁 profile/       # Views do perfil
+├── 📁 public/             # Recursos públicos
+│   ├── 📁 css/           # Arquivos CSS (Bootstrap)
+│   ├── 📁 js/            # Arquivos JavaScript
+│   └── 📁 img/           # Imagens
+├── 📁 scripts/            # Scripts SQL
+│   └── posts-comments-schema.sql # Schema da BD
+├── 📁 startup/            # Configurações de inicialização
+│   └── config.php        # Configuração principal
+├── 📁 vendor/             # Dependências do Composer
+├── 📁 logs/               # Arquivos de log
+├── composer.json          # Configuração do Composer
+├── index.php             # Ponto de entrada da aplicação
+├── routes.php            # Definição das rotas
+└── README.md             # Esta documentação
 ```
+
+### 🔄 Padrão MVC Implementado
+
+#### **Model (Modelo)**
+- `User.php` - Gestão de usuários
+- `Post.php` - Gestão de posts
+- `Project.php` - Gestão de projetos  
+- `Comment.php` - Gestão de comentários
+- `Auth.php` - Gestão de autenticação
+
+#### **View (Visão)**
+- Templates HTML com PHP embarcado
+- Interface responsiva com Bootstrap 5
+- Componentes reutilizáveis
+- Formulários com validação
+
+#### **Controller (Controlador)**
+- `AuthController` - Autenticação e registo
+- `UserController` - CRUD completo de usuários
+- `CommunityController` - Posts e comentários
+- `HomeController` - Página inicial e dashboard
+- `ProfileController` - Perfil do usuário
+
+---
 
 ## 🔧 Tecnologias Utilizadas
 
+### **Backend**
 - **PHP 7.4+** - Linguagem principal
-- **MySQL** - Sistema de gestão de base de dados
-- **PHP ActiveRecord** - ORM para mapeamento objeto-relacional
-- **Bootstrap 5** - Framework CSS para interface responsiva
+- **MySQL 5.7+** - Sistema de gestão de base de dados
+- **PHP ActiveRecord 1.2** - ORM para mapeamento objeto-relacional
 - **Composer** - Gerenciador de dependências
-- **Carbon** - Biblioteca para manipulação de datas
 
-## 🚀 Passos para Implementação do Projeto
+### **Frontend**
+- **Bootstrap 5** - Framework CSS responsivo
+- **Font Awesome 6** - Ícones
+- **JavaScript ES6** - Interatividade
 
-### 📋 Fase 1: Configuração Inicial do Ambiente
+### **Dependências**
+- **Carbon 2.46** - Biblioteca para manipulação de datas
+- **PHP ActiveRecord** - ORM para base de dados
 
-#### 1.1 Pré-requisitos
-- **XAMPP** (ou WAMP/LAMP) instalado
+---
+
+## � Instalação e Configuração
+
+### 📋 Pré-requisitos
+
+- **XAMPP/WAMP/LAMP** instalado
 - **PHP 7.4+**
 - **MySQL 5.7+**
 - **Composer** instalado globalmente
 
-#### 1.2 Configuração do Servidor
+### 1️⃣ Configuração do Servidor
+
 ```bash
 # Iniciar serviços XAMPP
-- Apache
-- MySQL
+- Apache ✅
+- MySQL ✅
 ```
 
-#### 1.3 Instalação de Dependências
+### 2️⃣ Clonar/Baixar o Projeto
+
+```bash
+# Baixar para a pasta do servidor web
+# Exemplo: C:\xampp\htdocs\gestufas
+```
+
+### 3️⃣ Instalar Dependências
+
 ```bash
 # Na pasta do projeto
 composer install
-
-# Verificar instalação
-composer show
 ```
 
-### 📊 Fase 2: Configuração da Base de Dados
+### 4️⃣ Configurar Base de Dados
 
-#### 2.1 Criar Base de Dados
 ```sql
+-- 1. Criar base de dados
 CREATE DATABASE gestufas_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- 2. Executar script SQL
+# Executar: scripts/posts-comments-schema.sql
+```
+
+### 5️⃣ Configurar Conexão
+
+Editar `startup/config.php` se necessário:
+
+```php
+// Configuração da base de dados
+$cfg->set_connections([
+    'development' => 'mysql://root:@localhost/gestufas_db?charset=utf8'
+]);
+```
+
+### 6️⃣ Configurar Permissões
+
+```bash
+# Criar pastas necessárias
+mkdir logs uploads
+chmod 755 logs uploads
+```
+
+---
+
+## 🎯 Funcionalidades Implementadas
+
+### � **Sistema de Autenticação**
+- ✅ Login de usuários
+- ✅ Logout seguro
+- ✅ Registo de novos usuários
+- ✅ Validação de credenciais
+- ✅ Gestão de sessões
+
+### 👥 **CRUD de Usuários**
+- ✅ **Create** - Criar novos usuários
+- ✅ **Read** - Listar e visualizar usuários
+- ✅ **Update** - Editar dados de usuários
+- ✅ **Delete** - Eliminar usuários
+- ✅ Validações completas
+- ✅ Interface intuitiva
+
+### 💬 **Sistema de Comunidade**
+- ✅ Criação de posts
+- ✅ Sistema de comentários
+- ✅ Visualização de posts
+- ✅ Interação entre usuários
+
+### �📊 **Dashboard e Estatísticas**
+- ✅ Contadores de usuários, posts, projetos
+- ✅ Posts recentes
+- ✅ Atividade da comunidade
+- ✅ Interface visual atrativa
+
+### 🎨 **Interface do Usuário**
+- ✅ Design responsivo
+- ✅ Navegação intuitiva
+- ✅ Formulários validados
+- ✅ Mensagens de feedback
+- ✅ Ícones e animações
+
+---
+
+## 🗺️ Sistema de Rotas
+
+### **Sintaxe das URLs**
+```
+http://localhost/gestufas/?c=[controller]&a=[action]
+```
+
+### **Rotas Principais**
+
+| URL | Controller | Action | Descrição |
+|-----|------------|--------|-----------|
+| `?c=home&a=index` | HomeController | index | Página inicial |
+| `?c=auth&a=login` | AuthController | login | Login |
+| `?c=auth&a=register` | AuthController | register | Registo |
+| `?c=users&a=index` | UserController | index | Listar usuários |
+| `?c=users&a=create` | UserController | create | Criar usuário |
+| `?c=users&a=show&id=1` | UserController | show | Ver usuário |
+| `?c=users&a=edit&id=1` | UserController | edit | Editar usuário |
+| `?c=community&a=index` | CommunityController | index | Posts |
+| `?c=profile&a=index` | ProfileController | index | Perfil |
+
+---
+
+## 💾 Esquema da Base de Dados
+
+### **Tabelas Principais**
+
+#### 👤 **users**
+```sql
+- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- username (VARCHAR(50), UNIQUE, NOT NULL)
+- email (VARCHAR(100), UNIQUE, NOT NULL)  
+- password (VARCHAR(255), NOT NULL)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+```
+
+#### 📝 **posts**
+```sql
+- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- title (VARCHAR(255), NOT NULL)
+- content (TEXT, NOT NULL)
+- user_id (INT, FOREIGN KEY)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+```
+
+#### 🗨️ **comments**
+```sql
+- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- content (TEXT, NOT NULL)
+- post_id (INT, FOREIGN KEY)
+- user_id (INT, FOREIGN KEY)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+```
+
+#### 📊 **projects**
+```sql
+- id (INT, PRIMARY KEY, AUTO_INCREMENT)
+- name (VARCHAR(255), NOT NULL)
+- description (TEXT)
+- user_id (INT, FOREIGN KEY)
+- created_at (TIMESTAMP)
+- updated_at (TIMESTAMP)
+```
+
+---
+
+## 🔒 Segurança Implementada
+
+### **Autenticação e Autorização**
+- ✅ Verificação de sessões
+- ✅ Controlo de acesso por controller
+- ✅ Validação de permissões
+
+### **Validação de Dados**
+- ✅ Sanitização de inputs
+- ✅ Validação no lado servidor
+- ✅ Escape de HTML para prevenir XSS
+
+### **Base de Dados**
+- ✅ Uso de ActiveRecord (previne SQL injection)
+- ✅ Validações nos modelos
+- ✅ Constraints de integridade
+
+### **Headers de Segurança**
+```php
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY  
+X-XSS-Protection: 1; mode=block
+```
+
+---
+
+## 📊 Exemplos de Uso
+
+### **1. Criar um Novo Usuário**
+
+```php
+// Via interface web
+# Aceder: ?c=users&a=create
+# Preencher formulário
+# Submeter
+
+// Via código
+$user = new User();
+$user->username = 'joao123';
+$user->email = 'joao@example.com';
+$user->password = md5('password');
+$user->save();
+```
+
+### **2. Listar Todos os Usuários**
+
+```php
+// Via interface web  
+# Aceder: ?c=users&a=index
+
+// Via código
+$users = User::find('all', array(
+    'order' => 'username ASC'
+));
+```
+
+### **3. Criar um Post**
+
+```php
+// Via interface web
+# Login: ?c=auth&a=login  
+# Aceder: ?c=community&a=create
+# Preencher formulário
+
+// Via código
+$post = new Post();
+$post->title = 'Meu Post';
+$post->content = 'Conteúdo do post...';
+$post->user_id = $_SESSION['user_id'];
+$post->save();
+```
+
+---
+
+## 🐛 Debug e Logs
+
+### **Ativar Debug**
+```php
+// Em config/app.php
+define('APP_DEBUG', true);
+```
+
+### **Localização dos Logs**
+```
+📁 logs/
+├── application.log    # Logs da aplicação
+├── php_errors.log    # Erros do PHP
+└── access.log        # Logs de acesso
+```
+
+### **Funções de Debug**
+```php
+// Debug de variáveis
+debug($variable, 'Label');
+
+// Log personalizado
+logError('Mensagem de erro', 'ERROR');
+```
+
+---
+
+## 🚀 Deploy em Produção
+
+### **1. Configurações de Produção**
+```php
+// config/config.php
+define('ENVIRONMENT', 'production');
+define('APP_DEBUG', false);
+```
+
+### **2. Base de Dados de Produção**
+```php
+'production' => 'mysql://user:pass@host/db_prod?charset=utf8'
+```
+
+### **3. Configurações de Servidor**
+```apache
+# .htaccess
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=$1 [QSA,L]
+```
+
+---
+
+## 🤝 Contribuição
+
+### **Como Contribuir**
+1. Fork do projeto
+2. Criar branch para feature (`git checkout -b feature/nova-funcionalidade`)
+3. Commit das alterações (`git commit -m 'Adicionar nova funcionalidade'`)
+4. Push para branch (`git push origin feature/nova-funcionalidade`)
+5. Abrir Pull Request
+
+### **Padrões de Código**
+- PSR-4 para autoloading
+- Comentários em português
+- Nomenclatura clara e descritiva
+- Validações obrigatórias
+
+---
+
+## 📞 Suporte
+
+### **Problemas Comuns**
+
+#### **Erro de Conexão BD**
+```
+Erro: Unknown database 'gestufas_db'
+Solução: Criar a base de dados e executar o schema
+```
+
+#### **Erro de Permissões**
+```
+Erro: Permission denied
+Solução: chmod 755 nas pastas logs/ e uploads/
+```
+
+#### **Erro de Autoload**
+```
+Erro: Class not found  
+Solução: composer install
+```
+
+---
+
+## 📄 Licença
+
+Este projeto é distribuído sob a licença MIT. Consulte o arquivo `LICENSE` para mais informações.
+
+---
+
+## 👨‍💻 Autor
+
+**Sistema GEstufas**
+- 📧 Email: suporte@gestufas.com
+- 🌐 Website: https://gestufas.com
+- 📱 GitHub: https://github.com/gestufas
+
+---
+
+## 🎉 Agradecimentos
+
+- **PHP ActiveRecord** - ORM utilizado
+- **Bootstrap** - Framework CSS  
+- **Font Awesome** - Ícones
+- **Composer** - Gestão de dependências
+
+---
+
+*Documentação atualizada em Janeiro de 2025* 🚀
 USE gestufas_db;
 ```
 

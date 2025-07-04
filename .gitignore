@@ -1,0 +1,58 @@
+# Dependências do Composer
+/vendor/
+composer.lock
+
+# Arquivos de configuração local
+.env
+.env.local
+.env.*.local
+
+# Logs
+/logs/*.log
+/logs/*.txt
+
+# Uploads
+/uploads/*
+!/uploads/.gitkeep
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.cache
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos de configuração específicos do ambiente
+config/database.php
+config/local.php
+
+# Arquivos de backup
+*.backup
+*.bak
+
+# Arquivos de cache
+/cache/*
+!/cache/.gitkeep
+
+# Arquivos de sessão
+/sessions/*
+!/sessions/.gitkeep
+
+# Arquivos de erro do PHP
+php_errors.log
+error.log
+
+# Arquivos de configuração do servidor
+.htaccess.local
+nginx.conf
+apache.conf
